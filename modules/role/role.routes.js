@@ -14,4 +14,20 @@ module.exports = [
             auth:false
         }
     },
+    {
+        path: '/role',
+        method: 'POST',
+        config: {
+            handler: RoleController.create,
+            validate: {
+                payload: Joi.object().keys({
+                    role : Joi.string().lowercase().required()
+                })
+            },
+            description: 'Create new Role',
+            tags: ['api','role'],
+            notes: 'Returns a role response',
+            auth: false
+        }
+    },
 ];

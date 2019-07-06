@@ -1,42 +1,37 @@
 const ProductController = require('./product.controller');
 const Joi = require('joi');
 module.exports = [
-    // {
-    //     path: '/product/{id}',
-    //     method: 'GET', 
-    //     config: {
-    //         handler: ProductController.getProductList,
-    //         validate:{
-    //             params: Joi.object().keys({
-    //                 id: Joi.number().required()
-    //             }),
-    //             headers:Joi.object({
-    //                 'authorization':Joi.string().required()
-    //             }).unknown()
-    //         },
-    //         description: 'product list [user] app',
-    //         tags: ['api','product'],
-    //         notes: 'Returns all product information',
-    //         auth:false
-    //     }
-    // },
-    // {
-    //     path: '/product/subcategory/{id}',
-    //     method: 'GET', 
-    //     config: {
-    //         handler: ProductController.getProductListBySubcategoryId,
-    //         validate:{
-    //             params: Joi.object().keys({
-    //                 id: Joi.string().required()
-    //             }),
-    //             headers:Joi.object({
-    //                 'authorization':Joi.string().required()
-    //             }).unknown()
-    //         },
-    //         description: 'product list by subcategory id[user] app',
-    //         tags: ['api','product'],
-    //         notes: 'Returns all product information',
-    //         auth:false
-    //     }
-    // },
+    {
+        path: '/product',
+        method: 'GET', 
+        config: {
+            handler: ProductController.index,
+            validate:{
+            },
+            description: 'product list ',
+            tags: ['api','product'],
+            notes: 'Returns all product information',
+            auth:false
+        }
+    },
+    {
+        path: '/product',
+        method: 'POST',
+        config: {
+            handler: ProductController.create,
+            validate: {
+                payload: Joi.object().keys({
+                    categoryId : Joi.string().required(),
+                    title : Joi.string().required(),
+                    volume : Joi.string().required(),
+                    price : Joi.number().required(),
+                    description : Joi.string().optional()
+                })
+            },
+            description: 'Create new product',
+            tags: ['api','product'],
+            notes: 'Returns a product response',
+            auth: false
+        }
+    },
 ];

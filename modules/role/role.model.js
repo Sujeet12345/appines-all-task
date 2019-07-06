@@ -1,8 +1,12 @@
 var mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const RoleSchema = new Schema({
-    shopName: {
-        type: String
+    role:{
+        type: String, 
+        lowercase: true, 
+        unique:true,
+        required: [true, "Can't be blank"], 
+        index: true
     },
     status:{
         type:Number,

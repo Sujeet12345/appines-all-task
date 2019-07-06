@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 const ProductSchema = new Schema({
     categoryId:{
         type:Schema.Types.ObjectId,
-        ref: 'Product'
+        ref: 'Category'
     },
     title:{
-        type: Number
+        type: String
     },
     volume:{
         type: String
@@ -15,7 +15,7 @@ const ProductSchema = new Schema({
         type: Number
     },
     description:{
-        type: Number
+        type: String
     },
     status:{
         type: Number,
